@@ -93,5 +93,5 @@ class Printer(Serial):
         Returns:
             (bool): True if movement succeed.
         """
-        self.send_gcode(Command.MOVE_TO_HOME)
+        self.send_gcode(f"{Command.MOVE_TO_HOME}")
         return True
