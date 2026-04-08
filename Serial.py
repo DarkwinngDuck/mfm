@@ -1,29 +1,27 @@
-class Serial:
-    """
-    Mock for testing.
+"""Legacy Serial class - deprecated.
+
+This module is kept for backward compatibility.
+Use serial_interface.BaseSerialDevice with serial_impl.RealSerialPort
+or serial_mock.MockSerialPort instead.
+"""
+
+from serial_interface import BaseSerialDevice
+from serial_mock import MockSerialPort
+
+
+class Serial(BaseSerialDevice):
+    """Legacy Serial class using mock port.
+
+    Deprecated: Use BaseSerialDevice with explicit port implementation.
     """
 
     def __init__(self, port, baudrate, timeout):
-        self.port = port
-        self.baudrate = baudrate
-        self.timeout = timeout
+        """Initialize with mock serial port.
 
-    def write(self, command: str):
-        print("Serial write command: ", command)
-
-    def readline(self) -> bytes:
-        print("Serial readline")
-        ok: bytes = b'ok'
-        return ok
-
-    def flushInput(self):
-        print("Serial flushInput")
-
-    def flushOutput(self):
-        print("Serial flushOutput")
-    
-    def open(self):
-        print('Serial open')
-        
-    def close(self):
-        print('Serial close')
+        Args:
+            port: Port identifier (used for mock).
+            baudrate: Baud rate (used for mock).
+            timeout: Timeout in seconds (used for mock).
+        """
+        mock_port = MockSerialPort(port=port, baudrate=baudrate, timeout=timeout)
+        super().__init__(port=mock_port)
