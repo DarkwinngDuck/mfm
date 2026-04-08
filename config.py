@@ -10,12 +10,12 @@ os.environ.update(dotenv_values(".env"))
 
 
 PRINTER_PORT = os.getenv("PRINTER_PORT")
-PRINTER_BAUDRATE = os.environ.get("PRINTER_BAUDRATE")
+PRINTER_BAUDRATE = int(os.environ.get("PRINTER_BAUDRATE"), 0)
 GAUSSMETER_PORT = os.getenv("GAUSSMETER_PORT")
-GAUSSMETER_BAUDRATE = os.getenv("GAUSSMETER_BAUDRATE")
-DEFAULT_BAUDRATE = os.environ.get("DEFAULT_BAUDRATE")
-DEFAULT_TIMEOUT = os.getenv("DEFAULT_TIMEOUT")
-DEFAULT_MOVE_SPEED = os.getenv("DEFAULT_MOVE_SPEED")
+GAUSSMETER_BAUDRATE = int(os.getenv("GAUSSMETER_BAUDRATE"), 0)
+DEFAULT_BAUDRATE = int(os.environ.get("DEFAULT_BAUDRATE"), 0)
+DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"), 0)
+DEFAULT_MOVE_SPEED = int(os.getenv("DEFAULT_MOVE_SPEED"), 0)
 
 
 class Command(Enum):

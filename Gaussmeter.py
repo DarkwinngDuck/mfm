@@ -1,4 +1,4 @@
-from serial import Serial
+from Serial import Serial
 from config import SerialConfig
 
 
@@ -18,6 +18,7 @@ class Gaussmeter(Serial):
     def get_magnetic_field(self):
         """
         Measure magnetic field.
+        TODO: rewrite function
 
         Returns:
             (float): field value in TODO: units.
